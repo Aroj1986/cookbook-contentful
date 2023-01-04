@@ -2,11 +2,14 @@ import './App.css';
 import Recipes from './components/Recipe/Recipes';
 import {useState, useEffect} from "react";
 import {Routes, Route, Link, useNavigate, NavLink} from 'react-router-dom';
-import Landingpage from "./components/Landingpage/Landingpage"
 import Recipedetail from './components/Recipe/Recipedetail';
 
-
-
+import Header from './components/header/Header'
+import Home from './components/header/Home'
+import Ingredients from './components/header/Ingredients'
+import Cuisine from './components/header/Cuisine'
+import Register from './components/header/Register'
+import Login from './components/header/Login'
 
 function App() {
 
@@ -30,21 +33,24 @@ function App() {
   }, [])
 
 
-
-
   return (
     <>
     <div className="App">
-    <h1>Easy Peasy Recipes</h1>
+      <h1 className="title">Easy Peasy Recipes</h1>
+            <Header />
     <div className="recipes">
     <Recipedetail />
       {recipes?.map((recipe) => {
         return <Recipes recipe={recipe} key={recipe.sys.id} /> })}
     </div>
     <Routes>
-      <Route path="/" element={<Landingpage />}></Route>
+      <Route path='/home' element={<Home />}></Route>
       <Route path="/recipes" element={<Recipes />}></Route>
       <Route path="/recipes/:id" element={<Recipedetail />}></Route>
+      <Route path='/ingredients' element={<Ingredients />}></Route>
+      <Route path='/cuisine' element={<Cuisine />}></Route>
+      <Route path='/register' element={<Register />}></Route>
+      <Route path='/login' element={<Login />}></Route>
     </Routes>
     </div>
     </>
