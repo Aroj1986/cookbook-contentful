@@ -1,6 +1,7 @@
 import './App.css';
 import Recipe from './components/Recipe/Recipe';
 import {useState} from "react";
+import AboutUs from './components/AboutUs/Aboutus';
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
     <div className="App">
       <h1>Easy Peasy Recipes</h1>
       <Recipe />
+      <AboutUs />
     </div>
   );
 }
