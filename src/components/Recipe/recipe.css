@@ -1,4 +1,140 @@
+
+:root{
+    --recipe-green: #83a8a4;
+}
+
 .recipes {
     display: flex;
     flex-direction: row;
+    flex: 1;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-wrap: wrap;
+    gap: 3rem;
+    padding: 2rem 8rem;
+    
 }
+
+.recipe {
+    width: 20%;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.recipetitle {
+    font-weight: 700;
+    height: 3.5rem;
+}
+
+.recipedetailbutton {
+    margin-top: 0.8rem;
+}
+
+.wrap{
+    white-space: pre-wrap;
+  }
+
+.recipedetail {
+padding: 1rem;
+}
+
+.row {
+    padding: 1rem;
+}
+
+.detailtitle{
+    font-size: 2rem;
+}
+
+.bold{
+    font-weight: 700;
+}
+
+.small {
+    font-size: 0.8rem;
+}
+
+
+.margin-bottom1 {
+    margin-bottom: 1rem;
+}
+.margin-bottom-half {
+    margin-bottom: o.5rem;
+}
+
+.margin-left {
+    margin-left: 1rem;
+}
+
+.margin-left-half{
+    margin-left: 0.5rem;
+}
+
+.image{
+    border-radius: 6px;
+    box-shadow: 0px 5px 5px rgba(0,0,0,0.4);
+    -moz-box-shadow: 0px 5px 5px rgba(0,0,0,0.4);
+    -webkit-box-shadow: 0px 5px 5px rgba(0,0,0,0.4);
+}
+
+.bigimage {
+    height: 300px;
+    width: 300px;
+}
+
+.lineheight {
+    line-height: 2rem;
+}
+
+.lineheight-big {
+    line-height: 3rem;
+}
+
+.ratingstars{
+    color: var(--recipe-green);
+    font-size: 1.1rem;
+}
+
+.text-with-shadow { 
+    text-shadow: 4px 4px 10px rgba(112, 108, 108, 0.736); 
+}
+
+
+.recipecolor {
+    color: var(--recipe-green);
+}
+
+.ingredients,
+.instruction {
+    width: 75%;
+}
+.headingdetail {
+    background-color: var(--recipe-green);
+    width: 75%;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 0.6rem;
+}
+
+.recipedetailbutton {
+    color: rgb(7, 24, 5) !important;
+    background-color: var(--recipe-green) !important;
+}
+
+.textdecoration-none {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    color: var(--recipe-green) !important;
+  }

@@ -1,9 +1,7 @@
 import './App.css';
 import Recipes from './components/Recipe/Recipes';
-import {useState, useEffect} from "react";
-import {Routes, Route, Link, useNavigate, NavLink} from 'react-router-dom';
+import {Routes, Route} from 'react-router-dom';
 import Recipedetail from './components/Recipe/Recipedetail';
-
 import Header from './components/header/Header'
 import Home from './components/Home/Home'
 import Ingredients from './components/header/Ingredients'
