@@ -7,7 +7,7 @@ function Header() {
     <div className='container-header'>
       <ul className='items-header'>
         <NavLink to="/home" className='items-navbar'>Home</NavLink> |
-        <NavLink to="/all-recipes" className='items-navbar'>All Recipes</NavLink> |
+        <NavLink to="/recipes" className='items-navbar'>All Recipes</NavLink> |
         <NavLink to="/ingredients" className='items-navbar'>Ingredients</NavLink> |
         <NavLink to="/cuisine" className='items-navbar'>Cuisine</NavLink>
       </ul>
