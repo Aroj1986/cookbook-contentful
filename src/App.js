@@ -16,12 +16,8 @@ function App() {
 
   return (
     <>
-    <div className="App">
-<<<<<<< HEAD
-      <h1>Easy Peasy Recipes</h1>
-      <Recipe />
-      <AboutUs />
-=======
+    <div className="App container">
+
       <h1 className="title">Easy Peasy Recipes</h1>
       <Header />
     <Routes>
@@ -33,7 +29,7 @@ function App() {
       <Route path='/register' element={<Register />}></Route>
       <Route path='/login' element={<Login />}></Route>
     </Routes>
->>>>>>> main
+
     </div>
     </>
   );

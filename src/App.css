@@ -12,6 +12,9 @@ html {
   background-color: #83a8a4;
   height: 4rem;
   padding-top: 0.5rem;
+  font-style: italic; 
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
 }
 @media all and (max-width:810px) {
   html{
@@ -36,3 +39,4 @@ html {
     font-size: 60%;
   }
 }
+
