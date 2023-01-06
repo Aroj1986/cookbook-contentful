@@ -9,11 +9,13 @@ import Cuisine from './components/header/Cuisine'
 import Register from './components/header/Register'
 import Login from './components/header/Login'
 
+
 function App() {
 
   return (
     <>
-    <div className="App">
+    <div className="App container">
+
       <h1 className="title">Easy Peasy Recipes</h1>
       <Header />
     <Routes>
@@ -25,6 +27,7 @@ function App() {
       <Route path='/register' element={<Register />}></Route>
       <Route path='/login' element={<Login />}></Route>
     </Routes>
+
     </div>
     </>
   );
