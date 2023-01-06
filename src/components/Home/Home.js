@@ -2,6 +2,7 @@ import React from 'react'
 import { AccordionButton, ModalTitle } from 'react-bootstrap'
 import AboutUs from '../AboutUs/Aboutus'
 import SliderImage from './group1.jpg'
+
 import { useState, useEffect } from "react";
 import "./Home.css"
 function Home() {
@@ -26,13 +27,23 @@ useEffect(() => {
 
   return (
     <div className="container">
-      <hr/>
+      
       <img src={SliderImage} className="img-fluid" alt="H"></img>
       <div className="row">
         <div className="col col-md-9">
+          <hr/>
+          
+          <h3>Welcome!</h3>
+        <p>Welcome to our recipe website! We are excited to share our love of cooking with you. Our site is full of delicious and easy-to-follow recipes for every occasion. Whether you're a seasoned chef or just starting out in the kitchen, we have something for everyone.
+
+In our recipe collection, you'll find a wide variety of dishes to choose from, including appetizers, main courses, sides, and desserts. We have recipes for all types of dietary restrictions and preferences, including vegetarian, vegan, gluten-free, and low-carb options.
+
+Not sure what to make? Check out our featured recipes section for some inspiration. You can also search for recipes by ingredient, cuisine, or occasion.
+
+We hope you enjoy exploring our site and trying out our recipes. Happy cooking!</p>
         <div className="row">
         
-        <div class="hr-sect">Our Top Rated Recipes</div>
+        <div class="hr-sect"><h3>Our Top Rated Recipes</h3></div>
         
 
         {recipes?.map((recipe) => {
@@ -80,6 +91,7 @@ useEffect(() => {
         </div>
         <AboutUs />
         </div>
+        <br/>
     </div>
   )
 }
