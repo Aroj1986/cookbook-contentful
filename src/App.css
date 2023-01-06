@@ -31,6 +31,7 @@ a:hover {
   margin: 0;
   font-size: 3rem;
   font-weight:900;
+  color: white;
 }
 
 /* }
@@ -56,4 +57,4 @@ a:hover {
   html{
     font-size: 60%;
   }
-} */
+
