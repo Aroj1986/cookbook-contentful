@@ -1,21 +1,40 @@
-html {
-  height: 100vh;
-  width: 100vw;
-  font-size: 100%;
+:root{
+  --recipe-green: #83a8a4;
+  --font-color:rgba(0, 0, 0, 0.746);
+}
 
+* {
+  font-family: 'Lato', sans-serif, 'Tahoma';
+  color: var(--font-color)
+}
+  
+.textdecoration-none {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  color: var(--recipe-green) !important;
+}
+
+.main{
+  min-height: 70vh;
+  background-color: rgba(92, 92, 92, 0.149);
 }
 
 .title {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  background-color: #83a8a4;
-  height: 4rem;
-  padding-top: 0.5rem;
-  font-style: italic; 
+  background-color: var(--recipe-green);
+  padding: 0.8rem;
+  margin: 0;
+  font-size: 3rem;
+  font-weight:900;
   color: white;
-  font-family: Arial, Helvetica, sans-serif;
 }
+
+/* }
 @media all and (max-width:810px) {
   html{
     font-size: 85%;
@@ -38,5 +57,4 @@ html {
   html{
     font-size: 60%;
   }
-}
 
