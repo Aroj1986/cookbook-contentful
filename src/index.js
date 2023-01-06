@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import "./components/header/header.css"
 import "./components/Recipe/recipe.css"
+import "./components/footer/footer.css"
+import "./App.css"
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.css';
 import { BrowserRouter } from 'react-router-dom';
