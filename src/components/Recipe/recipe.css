@@ -1,7 +1,5 @@
 
-:root{
-    --recipe-green: #83a8a4;
-}
+
 
 .recipes {
     display: flex;
@@ -103,7 +101,7 @@ padding: 1rem;
 }
 
 .text-with-shadow { 
-    text-shadow: 4px 4px 10px rgba(112, 108, 108, 0.736); 
+    text-shadow: 4px 4px 15px rgba(112, 108, 108, 0.736); 
 }
 
 
@@ -130,11 +128,3 @@ padding: 1rem;
     background-color: var(--recipe-green) !important;
 }
 
-.textdecoration-none {
-    text-decoration: none;
-    color: inherit;
-}
-
-a:hover {
-    color: var(--recipe-green) !important;
-  }
