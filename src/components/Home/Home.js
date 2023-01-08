@@ -2,6 +2,8 @@ import React from 'react'
 import { AccordionButton, ModalTitle } from 'react-bootstrap'
 import AboutUs from '../AboutUs/Aboutus'
 import SliderImage from './group1.jpg'
+import catGif from './mochi-cat.gif'
+import { Link } from 'react-router-dom';
 
 import { useState, useEffect } from "react";
 import "./Home.css"
@@ -13,22 +15,32 @@ function Home() {
   accessToken: "hsNzkIL8Lrero_6ljmPQHYT7gn9_0sho0Akw6R7tQ_s",
 });
 const [recipes, setRecipes] = useState([]);
+const [loading,setLoading] = useState(false)
 
 useEffect(() => {
+  setLoading(true)
+  const fetchData = async () => {
   client
     .getEntries()
     .then((response) => {
       console.log(response.items)
       setRecipes(response.items);
+      setLoading(false)
     })
     .catch(console.error);
+  }
+  setTimeout(fetchData, 3000);
 }, []);
+  
 
 
   return (
+    
     <div className="container">
+      {loading ?  <img className="cat-spinner" src={catGif} alt="Cat spinner"/>  : 
       
       <img src={SliderImage} className="img-fluid" alt="H"></img>
+    }
       <div className="row">
         <div className="col col-md-9">
           <hr/>
@@ -73,9 +85,9 @@ We hope you enjoy exploring our site and trying out our recipes. Happy cooking!<
                         })}
                     </span>
                     <br/>
-                    
+                    <Link to={`/recipes/${recipe.sys.id}`}>
                     <button type="button" class="btn btn-dark">Learn more</button>
-
+                    </Link>
                   
             
               </div>
@@ -93,6 +105,7 @@ We hope you enjoy exploring our site and trying out our recipes. Happy cooking!<
         </div>
         <br/>
     </div>
+    
   )
 }
 
