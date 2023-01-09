@@ -23,7 +23,6 @@ useEffect(() => {
   client
     .getEntries()
     .then((response) => {
-      console.log(response.items)
       setRecipes(response.items);
       setLoading(false)
     })
@@ -55,12 +54,14 @@ Not sure what to make? Check out our featured recipes section for some inspirati
 We hope you enjoy exploring our site and trying out our recipes. Happy cooking!</p>
         <div className="row">
         
-        <div class="hr-sect"><h3>Our Top Rated Recipes</h3></div>
+
+
+<div class="hr-sect"><h3>Our Top Rated Recipes</h3></div>
         {recipes?.map((recipe) => {
-          console.log(recipe);
           if (recipe.fields.recipeRating === 5) {
             return (
-              <div className="col col-md-4"> 
+              <div className="col col-md-4">
+
                 <img
                     className="image margin-bottom1"
                     src={recipe.fields.recipeImages[0].fields.file.url}
@@ -80,10 +81,12 @@ We hope you enjoy exploring our site and trying out our recipes. Happy cooking!<
                         })}
                     </span>
                     <br/>
+                    
+
+
                     <Link to={`/recipes/${recipe.sys.id}`}>
                     <button type="button" class="btn btn-dark">Learn more</button>
-                    </Link>
-                  
+                    </Link>                  
    
               </div>
            
