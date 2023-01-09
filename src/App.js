@@ -4,8 +4,8 @@ import {Routes, Route} from 'react-router-dom';
 import Recipedetail from './components/Recipe/Recipedetail';
 import Header from './components/header/Header'
 import Home from './components/Home/Home'
-import Ingredients from './components/header/Ingredients'
 import Cuisine from './components/Cuisine/Cuisine'
+import Ingredients from './components/Ingredients/Ingredients'
 import Register from './components/header/Register'
 import Login from './components/header/Login'
 import Footer from './components/footer/Footer';
@@ -14,14 +14,12 @@ import CuisineDetail from './components/Cuisine/Cuisinedetail';
 
 function App() {
 
-
-
   return (
     <>
       <Header />
       <div className="main">
        <Routes>
-        <Route path='/home' element={<Home />}></Route>
+        <Route path='/' element={<Home />}></Route>
         <Route path="/recipes" element={<Recipes />}></Route>
         <Route path="/recipes/:id" element={<Recipedetail />}></Route>
         <Route path='/ingredients' element={<Ingredients />}></Route>
