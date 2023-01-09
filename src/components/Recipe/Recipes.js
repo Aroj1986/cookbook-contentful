@@ -14,8 +14,9 @@ export default function Recipes() {
   });
 
   useEffect(() => {
-    client
-      .getEntries()
+    client.getEntries({
+      content_type: "ourCookbook"
+    })
       .then((response) => {
         console.log(response.items)
         setRecipes(response.items);

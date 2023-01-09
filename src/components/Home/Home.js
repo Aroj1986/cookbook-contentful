@@ -1,5 +1,4 @@
 import React from 'react'
-import { AccordionButton, ModalTitle } from 'react-bootstrap'
 import AboutUs from '../AboutUs/Aboutus'
 import SliderImage from './group1.jpg'
 import catGif from './mochi-cat.gif'
@@ -7,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 import { useState, useEffect } from "react";
 import "./Home.css"
+
 function Home() {
   const contentful = require("contentful");
   const client = contentful.createClient({
@@ -38,7 +38,7 @@ useEffect(() => {
     
     <div className="container">
       {loading ?  <img className="cat-spinner" src={catGif} alt="Cat spinner"/>  : 
-      
+     
       <img src={SliderImage} className="img-fluid" alt="H"></img>
     }
       <div className="row">
@@ -56,16 +56,11 @@ We hope you enjoy exploring our site and trying out our recipes. Happy cooking!<
         <div className="row">
         
         <div class="hr-sect"><h3>Our Top Rated Recipes</h3></div>
-        
-
         {recipes?.map((recipe) => {
           console.log(recipe);
           if (recipe.fields.recipeRating === 5) {
             return (
-              <div className="col col-md-4">
-              
-
-                
+              <div className="col col-md-4"> 
                 <img
                     className="image margin-bottom1"
                     src={recipe.fields.recipeImages[0].fields.file.url}
@@ -89,17 +84,14 @@ We hope you enjoy exploring our site and trying out our recipes. Happy cooking!<
                     <button type="button" class="btn btn-dark">Learn more</button>
                     </Link>
                   
-            
+   
               </div>
-              
-              
+           
             );
           }
           return null;
         })}
         </div>
-
-
         </div>
         <AboutUs />
         </div>
