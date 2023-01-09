@@ -1,9 +1,9 @@
 import React from 'react'
-import { AccordionButton, ModalTitle } from 'react-bootstrap'
 import AboutUs from '../AboutUs/Aboutus'
 import SliderImage from './group1.jpg'
 import { useState, useEffect } from "react";
 import "./Home.css"
+
 function Home() {
   const contentful = require("contentful");
   const client = contentful.createClient({
@@ -26,23 +26,16 @@ useEffect(() => {
 
   return (
     <div className="container">
-      <hr/>
       <img src={SliderImage} className="img-fluid" alt="H"></img>
       <div className="row">
         <div className="col col-md-9">
         <div className="row">
-        
-        <div class="hr-sect">Our Top Rated Recipes</div>
-        
-
+        <div className="hr-sect">Our Top Rated Recipes</div>
         {recipes?.map((recipe) => {
           console.log(recipe);
           if (recipe.fields.recipeRating === 5) {
             return (
-              <div className="col col-md-4">
-              
-
-                
+              <div className="col col-md-4"> 
                 <img
                     className="image margin-bottom1"
                     src={recipe.fields.recipeImages[0].fields.file.url}
@@ -63,20 +56,13 @@ useEffect(() => {
                     </span>
                     <br/>
                     
-                    <button type="button" class="btn btn-dark">Learn more</button>
-
-                  
-            
-              </div>
-              
-              
+                    <button type="button" className="btn btn-dark">Learn more</button>
+              </div>    
             );
           }
           return null;
         })}
         </div>
-
-
         </div>
         <AboutUs />
         </div>
