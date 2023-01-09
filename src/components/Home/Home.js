@@ -17,7 +17,6 @@ useEffect(() => {
   client
     .getEntries()
     .then((response) => {
-      console.log(response.items)
       setRecipes(response.items);
     })
     .catch(console.error);
@@ -32,17 +31,13 @@ useEffect(() => {
         <div className="col col-md-9">
         <div className="row">
         
-        <div class="hr-sect">Our Top Rated Recipes</div>
+        <div className="hr-sect">Our Top Rated Recipes</div>
         
 
         {recipes?.map((recipe) => {
-          console.log(recipe);
           if (recipe.fields.recipeRating === 5) {
             return (
               <div className="col col-md-4">
-              
-
-                
                 <img
                     className="image margin-bottom1"
                     src={recipe.fields.recipeImages[0].fields.file.url}
@@ -63,7 +58,7 @@ useEffect(() => {
                     </span>
                     <br/>
                     
-                    <button type="button" class="btn btn-dark">Learn more</button>
+                    <button type="button" className="btn btn-dark">Learn more</button>
 
                   
             

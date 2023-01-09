@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import "./components/header/header.css"
 import "./components/Recipe/recipe.css"
 import "./components/footer/footer.css"
+import "./components/Cuisine/cuisine.css"
 import "./App.css"
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.css';

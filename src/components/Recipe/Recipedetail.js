@@ -8,6 +8,7 @@ export default function Recipedetail() {
   const [recipeDetailImage, setRecipeDetailImage] = useState([]);
 
   const { id } = useParams();
+//   const params = useParams(); => now params.id can be used => {id} is destructuring naming for params.id
   const navigate = useNavigate();
 
   const contentful = require("contentful");
@@ -180,7 +181,7 @@ export default function Recipedetail() {
             </svg>
           </span>
           <span className="bold lineheight margin-left-half textdecoration-none">
-            Go back to overview
+            Go back to all recipes
           </span>
         </Link>
       </div>

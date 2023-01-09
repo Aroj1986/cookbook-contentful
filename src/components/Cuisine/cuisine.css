@@ -1,0 +1,14 @@
+.cuisine{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+}
+
+
+.cuisine-tags {
+    display: flex;
+    width: 70%;
+    flex-wrap: wrap;
+}
