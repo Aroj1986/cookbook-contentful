@@ -30,16 +30,20 @@ export default function Cuisine() {
    
   return (
     <div className="cuisine">
-    <div className="cuisine-description row">Not sure what to look for in detail? <br></br>
-      Get inspired by our categories
+    <div className="cuisine-description row">NOT SURE WHAT YOU'RE LOOKING FOR? <br></br>
+      Get inspired by our recipes from around the world
     </div>
+   
     <div className="cuisine-tags">
+    
       {tags?.map((tag) => {
+        
         return(
+          
           <div className="tag-div" key={tag.sys.id} >
             <div className="">
               <Link to={`/cuisine/${tag.sys.id}`}>
-              <button className="tag-button btn btn-outline-secondary m-3">{tag.name}</button>
+              <button className="tag-button btn m-3">{tag.name}</button>
               </Link>
               </div>
             
@@ -47,6 +51,7 @@ export default function Cuisine() {
         )
       })}
     </div>
+    <img className="cuisine-img" src='https://svgsilh.com/svg/961700.svg'alt="recipes from around the world"></img>
 
     <Helmet>
     <title>Cuisine - Easy Peasy</title>

@@ -8,7 +8,7 @@ export default function Recipedetail() {
   const [recipeDetailImage, setRecipeDetailImage] = useState([]);
 
   const { id } = useParams();
-//   const params = useParams(); => now params.id can be used => {id} is destructuring naming for params.id
+  //   const params = useParams(); => now params.id can be used => {id} is destructuring naming for params.id
   const navigate = useNavigate();
 
   const contentful = require("contentful");
@@ -32,8 +32,6 @@ export default function Recipedetail() {
     client
       .getEntry(id)
       .then((entry) => {
-        console.log(entry);
-        console.log(entry.fields.recipeImages);
         setRecipeDetail(entry);
         setRecipeDetailImage(entry.fields.recipeImages);
       })
@@ -49,16 +47,16 @@ export default function Recipedetail() {
               <img
                 src={image.fields?.file.url}
                 alt={recipeDetail.fields?.recipeTitle}
-                className="bigimage image"
+                className="bigimage image margin-left"
               ></img>
             </div>
           );
         })}
         <div className="col-8">
-          <div className="detailtitle lineheight  margin-bottom1 bold text-with-shadow ">
+          <div className="detailtitle lineheight margin-left-big margin-bottom1 bold text-with-shadow ">
             {recipeDetail.fields?.recipeTitle}
           </div>
-          <div className="rating lineheight margin-bottom1">
+          <div className="margin-left-big lineheight margin-bottom1">
             <span className="ratingstars">
               {Array(5)
                 .fill()
@@ -71,14 +69,14 @@ export default function Recipedetail() {
                   }
                 })}
             </span>
-            <span className="reviews margin-left-half small bold">
+            <span className="reviews margin-left-half small ">
               {recipeDetail.fields?.numberOfRatings} reviews
             </span>
           </div>
-          <div className="margin-bottom1">
+          <div className="margin-bottom1 margin-left-big">
             {recipeDetail.fields?.recipeDescriptionText}
           </div>
-          <div>
+          <div className="margin-left-big">
             <span className="recipecolor">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -95,11 +93,11 @@ export default function Recipedetail() {
                 />
               </svg>
             </span>
-            <span className="bold small lineheight margin-left-half">
+            <span className=" small lineheight margin-left-half ">
               {recipeDetail.fields?.recipeAuthor}
             </span>
           </div>
-          <div>
+          <div className="margin-left-big">
             <span className="recipecolor">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -115,12 +113,12 @@ export default function Recipedetail() {
                 />
               </svg>
             </span>
-            <span className="bold small lineheight margin-left-half">
+            <span className=" small lineheight margin-left-half">
               {recipeDetail.fields?.recipeCreated}
             </span>
           </div>
 
-          <div className="margin-bottom1">
+          <div className="margin-bottom1 margin-left-big">
             <span className="recipecolor">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -135,7 +133,7 @@ export default function Recipedetail() {
                 <path d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z" />
               </svg>
             </span>
-            <span className="bold small lineheight margin-left-half">
+            <span className=" small lineheight margin-left-half">
               {recipeDetail.fields?.recipeDuration} minutes
             </span>
           </div>
@@ -144,13 +142,13 @@ export default function Recipedetail() {
       <div className="row">
         <div className="col-6">
           <div className="headingdetail margin-bottom1">Ingredients</div>
-          <div className="wrap lineheight-big ingredients margin-left ">
+          <div className="wrap lineheight-big recipe-ingredients margin-left">
             {recipeDetail.fields?.recipeIngredients}
           </div>
         </div>
         <div className="col-6">
           <div className="headingdetail margin-bottom1">
-            Cooking Instrcutions
+            Cooking Instructions
           </div>
           <div className="wrap lineheight-big instruction margin-left">
             {recipeDetail.fields?.recipeDescription}
@@ -165,23 +163,23 @@ export default function Recipedetail() {
           </Helmet>
         </div>
       </div>
-      <div className="row">
-        <Link to="/recipes" className="textdecoration-none">
-          <span className="recipecolor">
+      <div className="row back-btn">
+        <Link onClick={() => navigate(-1)} className="textdecoration-none ">
+          <span className="">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="30"
-              height="30"
+              width="20"
+              height="20"
               fill="currentColor"
-              className="bi bi-skip-backward-btn"
+              className="bi bi-skip-backward-btn "
               viewBox="0 0 16 16"
             >
               <path d="M11.21 5.093A.5.5 0 0 1 12 5.5v5a.5.5 0 0 1-.79.407L8.5 8.972V10.5a.5.5 0 0 1-.79.407L5 8.972V10.5a.5.5 0 0 1-1 0v-5a.5.5 0 0 1 1 0v1.528l2.71-1.935a.5.5 0 0 1 .79.407v1.528l2.71-1.935z" />
               <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z" />
             </svg>
           </span>
-          <span className="bold lineheight margin-left-half textdecoration-none">
-            Go back to all recipes
+          <span className="bold lineheight margin-left-half textdecoration-none half-small">
+            Go back
           </span>
         </Link>
       </div>
