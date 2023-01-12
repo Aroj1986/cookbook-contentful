@@ -57,6 +57,12 @@ We hope you enjoy exploring our site and trying out our recipes. Happy cooking!<
 
 
 <div class="hr-sect"><h3>Our Top Rated Recipes</h3></div>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
         {recipes?.map((recipe) => {
           if (recipe.fields.recipeRating === 5) {
             return (
