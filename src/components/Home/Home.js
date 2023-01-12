@@ -43,7 +43,7 @@ useEffect(() => {
       <div className="row">
         <div className="col col-md-9">
           <hr/>
-          
+      
           <h3>Welcome!</h3>
         <p>Welcome to our recipe website! We are excited to share our love of cooking with you. Our site is full of delicious and easy-to-follow recipes for every occasion. Whether you're a seasoned chef or just starting out in the kitchen, we have something for everyone.
 

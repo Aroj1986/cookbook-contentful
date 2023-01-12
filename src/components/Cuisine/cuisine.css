@@ -1,14 +1,54 @@
-.cuisine{
+.cuisine,
+.cuisine-detail {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    gap: 4rem;
+    gap: 1rem;
+    padding-top: 1rem;
+    min-height: 50vh;
 }
 
+.cuisine-img {
+    width: 50%;
+}
 
 .cuisine-tags {
     display: flex;
     width: 70%;
     flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.cuisinedetail-description{
+    background-color: var(--recipe-green);
+    width: 25%;
+    border-radius: 4px;
+    font-size: 1.2rem;
+    line-height: 3rem;
+    padding: 1rem 2rem;
+    color: var(--font-color);
+    text-align: center;
+}
+
+.cuisine-description {
+    background-color: var(--recipe-green);
+    border-radius: 4px;
+    font-size: 1.2rem;
+    text-align: center;
+    line-height: 3rem;
+    margin-top: 5rem;
+    padding: 1rem 2rem;
+    color: var(--font-color);
+}
+
+.tag-button {
+    border-style: solid !important;
+    border-color: var(--font-color) !important;
+    /* background-color: whitesmoke !important; */
+    font-weight: 800;
+}
+
+.tag-button:hover {
+    background-color: var(--recipe-green);
 }
