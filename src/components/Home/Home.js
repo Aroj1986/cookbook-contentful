@@ -45,7 +45,7 @@ useEffect(() => {
       <div className="row">
         <div className="col col-md-9">
           <hr/>
-          
+      
           <h3>Welcome!</h3>
         <p>Welcome to our recipe website! We are excited to share our love of cooking with you. Our site is full of delicious and easy-to-follow recipes for every occasion. Whether you're a seasoned chef or just starting out in the kitchen, we have something for everyone.
 
@@ -56,9 +56,13 @@ Not sure what to make? Check out our featured recipes section for some inspirati
 We hope you enjoy exploring our site and trying out our recipes. Happy cooking!</p>
         <div className="row">
         
+<div class="hr-sect"><h3>Our Top Rated Recipes</h3></div>
 
-
-<div className="hr-sect"><h3>Our Top Rated Recipes</h3></div>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
         {recipes?.map((recipe) => {
           if (recipe.fields.recipeRating === 5) {
             return (

@@ -3,19 +3,20 @@ export default function Footer() {
     <footer className="page-footer font-small pt-3 ">
       <div className="container-fluid text-md-left">
         <div className="row p-1">
-          <div className="col-md-6 mt-md-0 mt-3">
-            <h5 className="text-uppercase white-text">Easy Peasy Recipes</h5>
-            <p className="small bold">
-              Easy Peasy recipes are easy peasy made and delicious!
+          <div className="col-md-6 mt-md-0 mt-3 ">
+            <h5 className="text-uppercase white-text mb-3">Easy Peasy Recipes</h5>
+            <p className="small  margin-left">
+            We all come from somewhere. We all experience food in our own unique ways. <br></br>
+                        Easy Peasy recipes are easy peasy made and delicious!
             </p>
           </div>
 
           <hr className="clearfix w-100 d-md-none pb-0" />
 
           <div className="col-md-3 mb-md-0 mb-3">
-            <h5 className="text-uppercase white-text">Contact</h5>
+            <h5 className="text-uppercase white-text  mb-3">Contact</h5>
             <ul className="list-unstyled">
-              <li>
+              <li className="margin-bottom1 margin-left">
                 <span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -30,13 +31,13 @@ export default function Footer() {
                   </svg>
                 </span>
                 <a
-                  className="margin-left-half textdecoration-none"
+                  className="margin-left-half textdecoration-none half-small "
                   href="mailto:hello@EasyPeasyRecipes.com"
                 >
-                  Send email
+                  Mail us!
                 </a>
               </li>
-              <li>
+              <li className="margin-bottom1  margin-left">
                 <span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -50,25 +51,25 @@ export default function Footer() {
                   </svg>
                 </span>
                 <a
-                  className="margin-left-half textdecoration-none"
+                  className="margin-left-half half-small textdecoration-none"
                   href="callto:+08353782021037"
                 >
-                  Call us
+                  Call us!
                 </a>
               </li>
             </ul>
           </div>
 
           <div className="col-md-3 mb-md-0 mb-3">
-            <h5 className="text-uppercase white-text">Insights</h5>
+            <h5 className="text-uppercase white-text  mb-3">Insights</h5>
             <ul className="list-unstyled">
-              <li>
-                <a className="textdecoration-none footerhover" href="#!">
+              <li className="margin-bottom1  margin-left">
+                <a className="textdecoration-none footerhover half-small" href="#!">
                   Team
                 </a>
               </li>
-              <li>
-                <a className="textdecoration-none" href="#!">
+              <li className="margin-bottom1  margin-left">
+                <a className="textdecoration-none half-small" href="#!">
                   Join Us!
                 </a>
               </li>
@@ -77,7 +78,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="footer-copyright text-center small py-3 pt-1 gray-text ">
+      <div className="footer-copyright text-center small py-1 pt-1 ">
         © 2020 Copyright: John, Aroj, Nadja & Candy{" "}
       </div>
     </footer>

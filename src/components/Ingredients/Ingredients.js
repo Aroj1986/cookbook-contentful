@@ -1,11 +1,25 @@
 import React, { useEffect, useState } from 'react'
 import './ingredients.css'
 
+// https://www.foodhero.org/ingredients
 // https://cdn.contentful.com/spaces/3nafpp0jo6h4/environments/master/entries?access_token=3I8lW_L0QpggHL-KfMPiTfCKR425Btwa3nTLelozRsI
 function Ingredients() {
 
     const [ingredientItems, setIngredientItems] = useState([])
     const [query, setQuery] = useState("")
+
+/*      useEffect(()=>{
+        axios.get(`http://cdn.contentful.com/spaces/3nafpp0jo6h4/environments/master/entries?access_token=3I8lW_L0QpggHL-KfMPiTfCKR425Btwa3nTLelozRsI?${query}`)
+            .then((response)=>{
+                console.log(response.data.items)
+                setIngredientItems(response.data.items)
+            })
+            .catch((err) => {
+                console.log(err);
+                console.log("check for error!!");
+            });
+    }, [query]) */
+
 
     const contentful = require("contentful")
     const client = contentful.createClient({
@@ -117,6 +131,10 @@ function Ingredients() {
           )
         })}
       </div>
+      <Helmet>
+        <title>Ingredients - Easy Peasy</title>
+        <meta name="find all ingredients here" content="All ingredients" />
+      </Helmet>
     </>
 
   )
