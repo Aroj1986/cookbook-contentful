@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
+import Recipesearchbar from "./Recipesearchbar";
 
 export default function Recipes() {
   const [recipes, setRecipes] = useState([]);
+
 
   //call the Contentful-client to fetch the data
   const contentful = require("contentful");
@@ -14,15 +16,15 @@ export default function Recipes() {
   });
 
   useEffect(() => {
-    client
-      .getEntries({
-        content_type:"ourCookbook"
-      })
-      .then((response) => {
-        console.log(response.items)
-        setRecipes(response.items);
-      })
-      .catch(console.error);
+     client
+       .getEntries({
+         content_type:"ourCookbook"
+       })
+       .then((response) => {
+         console.log(response.items)
+         setRecipes(response.items);
+       })
+       .catch(console.error);
   }, []);
 
   return (
@@ -31,6 +33,7 @@ export default function Recipes() {
         <title>All Recipes - Easy Peasy</title>
         <meta name="find all recipes here" content="All easy peasy recipes" />
         </Helmet>
+        <Recipesearchbar setRecipes={setRecipes}/>
     <div className="recipes">
       {recipes?.map((recipe) => {
         return (
@@ -65,27 +68,29 @@ export default function Recipes() {
                         })}
                     </span>
                     :
-                    <span className="reviews small bold">no ratings yet</span>
+                    <span className="reviews small">no ratings yet</span>
                     }
             </>
             <>
                {recipe.fields?.numberOfRatings
                 ?
-                    <span className="reviews margin-left-half small bold">
+                    <span className="reviews small">
                         {recipe.fields?.numberOfRatings} reviews
                     </span>
                 :
-                    <span className="reviews margin-left-half small bold">no reviews yet</span>}
+                    <span className="reviews small">no reviews yet</span>}
             </>
           </div>
 
             <Link to={`/recipes/${recipe.sys.id}`}>
-              <button type="button" className="btn btn-secondary btn-sm recipedetailbutton">Show More</button>
+              <button type="button" className="btn btn-secondary btn-m recipedetailbutton">More</button>
             </Link>
           </div>
+          
         );
       })}
     </div>
+        
     </div>
   );
 }
