@@ -1,96 +1,134 @@
-import React, { useEffect, useState } from "react";
-import "./ingredients.css";
-import { Helmet } from "react-helmet";
+import React, { useEffect, useState } from 'react'
+import './ingredients.css'
 
 // https://www.foodhero.org/ingredients
 // https://cdn.contentful.com/spaces/3nafpp0jo6h4/environments/master/entries?access_token=3I8lW_L0QpggHL-KfMPiTfCKR425Btwa3nTLelozRsI
 function Ingredients() {
-  const contentful = require("contentful");
-  const client = contentful.createClient({
-    space: "3nafpp0jo6h4",
-    environment: "master", // defaults to 'master' if not set
-    accessToken: "3I8lW_L0QpggHL-KfMPiTfCKR425Btwa3nTLelozRsI",
-  });
 
-  // to fetch data from contentful
-  const [ingredients, setIngredients] = useState([]);
-  useEffect(() => {
-    client
-      .getEntries({
-        content_type: "ingredients",
-      })
-      .then((response) => {
-        console.log(response.items);
-        setIngredients(response.items);
+    const [ingredientItems, setIngredientItems] = useState([])
+    const [query, setQuery] = useState("")
+
+/*      useEffect(()=>{
+        axios.get(`http://cdn.contentful.com/spaces/3nafpp0jo6h4/environments/master/entries?access_token=3I8lW_L0QpggHL-KfMPiTfCKR425Btwa3nTLelozRsI?${query}`)
+            .then((response)=>{
+                console.log(response.data.items)
+                setIngredientItems(response.data.items)
+            })
+            .catch((err) => {
+                console.log(err);
+                console.log("check for error!!");
+            });
+    }, [query]) */
+
+
+    const contentful = require("contentful")
+    const client = contentful.createClient({
+        space: "3nafpp0jo6h4",
+        environment: "master", // defaults to 'master' if not set
+        accessToken: "3I8lW_L0QpggHL-KfMPiTfCKR425Btwa3nTLelozRsI",
       });
-  }, []);
 
-  // to adjust searched/typed ingredient name
-  const [typeIngredient, setTypeIngredient] = useState("");
-  const ingredientToSearch = (event) => {
-    setTypeIngredient(event.target.value);
-    console.log(event.target.value);
-  };
+    useEffect(() => {
+        client.getEntries({
+            content_type: "ingredients"
+          })
+        .then((response) => {
+            console.log(response.items)
+            setIngredientItems(response.items)
+        })
+    }, [])
+      
+      // for typing ingredient name
+      const [inputIngredient, setInputIngredient] = useState("")
+      const [filterLetter, setFilterLetter] = useState("")
+      const ingredientToSearch = (event) => {
+        setInputIngredient(event.target.value)
+        console.log(event.target.value)
+    }
 
+    // for clicking search button
+    const searchHandleClick = (e) => {
+        if(!inputIngredient){
+            return alert("No results found for empty keywords");
+        } else {
+            setQuery(inputIngredient)
+            console.log(`Button clicked to search ingredient ${inputIngredient}`)
+            setInputIngredient("")
+        }
+    }
+
+    // for clicking alphabet NavList
+    const handleAlphabet = event => {
+     console.log(event.target.innerText)
+     setFilterLetter(event.target.innerText) 
+    }
+    const filteredIngredients = ingredientItems.filter((currentIngredient) => {
+      if (currentIngredient.fields.ingredientName['0'] === filterLetter) {return currentIngredient.fields.ingredientName}
+  })
+    
   return (
     <>
-      <div class="alpha_list">
-        <a href="/ingredients#A">A</a> &nbsp;
-        <a href="/ingredients#B">B</a> &nbsp;
-        <a href="/ingredients#C">C</a> &nbsp;
-        <a href="/ingredients#C">D</a> &nbsp;
-        <a href="/ingredients#E">E</a> &nbsp;
-        <a href="/ingredients#C">F</a> &nbsp;
-        <a href="/ingredients#G">G</a> &nbsp;
-        <a href="/ingredients#H">H</a> &nbsp;
-        <a href="/ingredients#C">I</a> &nbsp;
-        <a href="/ingredients#C">J</a> &nbsp;
-        <a href="/ingredients#K">K</a> &nbsp;
-        <a href="/ingredients#L">L</a> &nbsp;
-        <a href="/ingredients#M">M</a> &nbsp;
-        <a href="/ingredients#C">K</a> &nbsp;
-        <a href="/ingredients#O">O</a> &nbsp;
-        <a href="/ingredients#P">P</a> &nbsp;
-        <a href="/ingredients#C">L</a> &nbsp;
-        <a href="/ingredients#R">R</a> &nbsp;
-        <a href="/ingredients#S">S</a> &nbsp;
-        <a href="/ingredients#T">T</a> &nbsp;
-        <a href="/ingredients#C">U</a> &nbsp;
-        <a href="/ingredients#C">V</a> &nbsp;
-        <a href="/ingredients#W">W</a> &nbsp;
-        <a href="/ingredients#C">X</a> &nbsp;
-        <a href="/ingredients#Y">Y</a> &nbsp;
-        <span class="nolink">Z</span>
+      <div  className="alpha_list">
+        <a href="/ingredients#A" onClick={handleAlphabet}>A</a> &nbsp; 
+        <a href="/ingredients#B" onClick={handleAlphabet}>B</a> &nbsp; 
+        <a href="/ingredients#C" onClick={handleAlphabet}>C</a> &nbsp; 
+        <a href="/ingredients#C" onClick={handleAlphabet}>D</a> &nbsp; 
+        <a href="/ingredients#E" onClick={handleAlphabet}>E</a> &nbsp; 
+        <a href="/ingredients#C" onClick={handleAlphabet}>F</a> &nbsp;
+        <a href="/ingredients#G" onClick={handleAlphabet}>G</a> &nbsp; 
+        <a href="/ingredients#H" onClick={handleAlphabet}>H</a> &nbsp; 
+        <a href="/ingredients#C" onClick={handleAlphabet}>I</a> &nbsp;
+        <a href="/ingredients#C" onClick={handleAlphabet}>J</a> &nbsp;
+        <a href="/ingredients#K" onClick={handleAlphabet}>K</a> &nbsp; 
+        <a href="/ingredients#L" onClick={handleAlphabet}>L</a> &nbsp; 
+        <a href="/ingredients#M" onClick={handleAlphabet}>M</a> &nbsp; 
+        <a href="/ingredients#C" onClick={handleAlphabet}>K</a> &nbsp; 
+        <a href="/ingredients#O" onClick={handleAlphabet}>O</a> &nbsp; 
+        <a href="/ingredients#P" onClick={handleAlphabet}>P</a> &nbsp; 
+        <a href="/ingredients#C" onClick={handleAlphabet}>L</a> &nbsp;
+        <a href="/ingredients#R" onClick={handleAlphabet}>R</a> &nbsp; 
+        <a href="/ingredients#S" onClick={handleAlphabet}>S</a> &nbsp; 
+        <a href="/ingredients#T" onClick={handleAlphabet}>T</a> &nbsp; 
+        <a href="/ingredients#C" onClick={handleAlphabet}>U</a> &nbsp;
+        <a href="/ingredients#C" onClick={handleAlphabet}>V</a> &nbsp;
+        <a href="/ingredients#W" onClick={handleAlphabet}>W</a> &nbsp; 
+        <a href="/ingredients#C" onClick={handleAlphabet}>X</a> &nbsp;
+        <a href="/ingredients#Y" onClick={handleAlphabet}>Y</a> &nbsp; 
+        <a href="/ingredients#Z" onClick={handleAlphabet}>Z</a> &nbsp;
       </div>
-      <div className="search-form">
+        
+       <div className='search-form'>
         <form>
-          <input
-            type="text"
-            placeholder="search ingredient"
-            value={typeIngredient}
+            <input 
+            type='text' 
+            placeholder='search ingredient'
+            value={inputIngredient}
             onChange={ingredientToSearch}
-          ></input>
-          <button>Search</button>
+            ></input>
         </form>
-      </div>
-      <div className="ingredients">
-        {ingredients.map((ingredient) => {
+        <button className='search-button' onClick={searchHandleClick}>Search</button>
+      </div> 
+
+      <div className='ingredients'>
+        {filteredIngredients.length === 0 && <div><h2 className="no-items-found">No items found!</h2></div>}
+        {filteredIngredients.map((ingredient) => {
           return (
             <div className="card-container" key={ingredient.sys.id}>
-              <img
-                src={ingredient.fields.ingredientImage.fields.file.url}
-                key={ingredient.fields.ingredientImage.sys.id}
-                style={{ width: 150, height: 150 }}
-              ></img>
-              <a
-                className="card-caption"
-                href={ingredient.fields.ingredientImage.fields.file.url}
-                target="_blank"
-              >
-                {ingredient.fields.ingredientName}
-              </a>
+                <img src={ingredient.fields.ingredientImage.fields.file.url} key={ingredient.fields.ingredientImage.sys.id} style={{ width: 150, height: 150 }} alt={"ingredient image"}></img>
+                <a className='card-caption' href={ingredient.fields.ingredientImage.fields.file.url} target='_blank'>{ingredient.fields.ingredientName}</a>
             </div>
-          );
+          )
+        })}
+      </div>
+
+      <div className='ingredients'>
+        {ingredientItems.map((ingredient) => {
+          return (
+            <div className="card-container" key={ingredient.sys.id}>
+                <img src={ingredient.fields.ingredientImage.fields.file.url} key={ingredient.fields.ingredientImage.sys.id} style={{ width: 150, height: 150 }} alt={"ingredient image"}></img>
+                <a className='card-caption' href={ingredient.fields.ingredientImage.fields.file.url} target='_blank'>{ingredient.fields.ingredientName}</a>
+            </div>
+          )
         })}
       </div>
       <Helmet>
@@ -98,7 +136,9 @@ function Ingredients() {
         <meta name="find all ingredients here" content="All ingredients" />
       </Helmet>
     </>
-  );
+
+  )
 }
 
-export default Ingredients;
+export default Ingredients
+
