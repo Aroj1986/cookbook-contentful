@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 export default function AboutUs() {
     return (
        
-    <div id="aboutus-section" className='className="col col-md-3'>
+    <div id="aboutus-section" className='col col-md-3'>
         <h1>About Us</h1>
         <p>WELCOME TO OUR COOKBOOK!</p>
         <p>We all come from somewhere. We all experience food in our own unique ways. 

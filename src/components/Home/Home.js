@@ -3,6 +3,8 @@ import AboutUs from '../AboutUs/Aboutus'
 import SliderImage from './group1.jpg'
 import catGif from './mochi-cat.gif'
 import { Link } from 'react-router-dom';
+import Carousel from 'react-bootstrap/Carousel';
+
 
 import { useState, useEffect } from "react";
 import "./Home.css"
@@ -56,7 +58,7 @@ We hope you enjoy exploring our site and trying out our recipes. Happy cooking!<
         
 
 
-<div class="hr-sect"><h3>Our Top Rated Recipes</h3></div>
+<div className="hr-sect"><h3>Our Top Rated Recipes</h3></div>
         {recipes?.map((recipe) => {
           if (recipe.fields.recipeRating === 5) {
             return (
@@ -85,7 +87,7 @@ We hope you enjoy exploring our site and trying out our recipes. Happy cooking!<
 
 
                     <Link to={`/recipes/${recipe.sys.id}`}>
-                    <button type="button" class="btn btn-dark">Learn more</button>
+                    <button type="button" className="btn btn-dark">Learn more</button>
                     </Link>                  
    
               </div>
@@ -98,7 +100,7 @@ We hope you enjoy exploring our site and trying out our recipes. Happy cooking!<
         </div>
         <AboutUs />
         </div>
-        <br/>
+
     </div>
     
   )

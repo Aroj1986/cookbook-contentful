@@ -1,0 +1,131 @@
+createBrandsMapData(){
+  let brandData = {}
+  brandList.map((key) => {
+      brandData[key] = this.state.items.filter((currentValue) => {if(currentValue.value[0] === key) return currentValue}) 
+  })
+  this.setState({
+      allBrands: brandData,
+      brandSortData: brandData
+  })
+}
+
+handleClick = event =>{
+  const brandValues = event.target.value
+  if(brandValues === "all"){
+      return this.getBrands()
+  }
+  else{
+      let brandSortDataByCharacter = this.state.brandSortData[brandValues]
+      return brandSortDataByCharacter
+  }
+}
+
+getBrandSortData(){
+  return(
+      <div>
+          <button value="all" onClick={this.handleClick}>All</button>
+          {brandList.map((item, index) => 
+              <button value={item} key={index} onClick={this.handleClick}>{item}</button>
+          )}
+      </div>
+  )
+}
+
+
+        {ingredientItemsProp.map((ingredient) => {
+          return (
+          ingredient.filter(() => {if(ingredient.fields.ingredientName['0'] === 'A') return ingredient.fields.ingredientName})
+          )
+        })}
+
+*****************************************
+
+        {ingredientItemsProp.filter((currentIngredient) => {
+            if (currentIngredient.fields.ingredientName['0'].toLowerCase() === "A") {
+              return (
+              <li>{currentIngredient.fields.ingredientName}</li>
+              )
+            }
+            console.log(currentIngredient.fields.ingredientName)
+            console.log(currentIngredient.fields.ingredientName['0'])
+        })}
+
+
+***********************************************
+import Carousel from 'react-bootstrap/Carousel';
+
+        <div className='flex flex-row'>
+          <div className='col'>
+            <div className="hr-sect"><h3>Our Top Rated Recipes</h3></div>
+            <div>
+              <Carousel variant="dark">
+                <Carousel.Item>
+                  <div className='carousel-flex'>
+                    {recipes?.map((recipe) => {
+                      if (recipe.fields.recipeRating === 5) {
+                        return (
+                          <div className="col col-md-4">
+                            <img
+                                className="image margin-bottom1"
+                                src={recipe.fields.recipeImages[0].fields.file.url} />
+                            <p>{recipe.fields.recipeTitle}</p>
+                            <span className="ratingstars">
+                              {Array(5)
+                              .fill()
+                              .map((_, i) => {
+                              const ratingValue = i + 1;
+                              if (ratingValue <= recipe.fields?.recipeRating) {
+                                  return <span key={i}>★</span>;
+                              } else {
+                                  return <span key={i}>☆</span>;
+                              }
+                              })}
+                            </span>
+                            <br/>
+                            <Link to={`/recipes/${recipe.sys.id}`}><button type="button" className="btn btn-dark">Learn more</button></Link>
+                          </div>
+                        );
+                    }
+                    return null;
+                    })}
+                  </div>
+                </Carousel.Item>
+                
+                <Carousel.Item>
+                  <div className='carousel-flex'>
+                    {recipes?.map((recipe) => {
+                      if (recipe.fields.recipeRating === 4) {
+                        return (
+                          <div className="col col-md-4">
+                            <img
+                                className="image margin-bottom1"
+                                src={recipe.fields.recipeImages[0].fields.file.url} />
+                            <p>{recipe.fields.recipeTitle}</p>
+                            <span className="ratingstars">
+                              {Array(5)
+                              .fill()
+                              .map((_, i) => {
+                              const ratingValue = i + 1;
+                              if (ratingValue <= recipe.fields?.recipeRating) {
+                                  return <span key={i}>★</span>;
+                              } else {
+                                  return <span key={i}>☆</span>;
+                              }
+                              })}
+                            </span>
+                            <br/>
+                            <Link to={`/recipes/${recipe.sys.id}`}><button type="button" className="btn btn-dark">Learn more</button></Link> 
+                          </div>
+                        );
+                    }
+                    return null;
+                    })}
+                  </div>
+                </Carousel.Item>
+              </Carousel>
+            </div>
+          </div>
+{/*           <div>
+            <AboutUs />
+          </div> */}
+        </div>
