@@ -4,6 +4,7 @@ import SliderImage from "./group1.jpg";
 import catGif from "./mochi-cat.gif";
 import { Link } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
+import { Helmet } from "react-helmet";
 
 import { useState, useEffect } from "react";
 import "./Home.css";
@@ -106,6 +107,10 @@ function Home() {
         </div>
         <AboutUs />
       </div>
+      <Helmet>
+        <title>Home - Easy Peasy</title>
+        <meta name="Home - Easy Peasy" content="Home - Easy Peasy" />
+      </Helmet>
     </div>
   );
 }

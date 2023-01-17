@@ -4,7 +4,8 @@ import { NavLink } from 'react-router-dom'
 import {Icon} from 'react-icons-kit'
 import {eyeOff} from 'react-icons-kit/feather/eyeOff'
 import {eye} from 'react-icons-kit/feather/eye'
-import { useState } from 'react'
+import { useState } from 'react';
+import { Helmet } from 'react-helmet'
 
 function Login() {
 
@@ -22,6 +23,10 @@ function Login() {
   })
   return (
     <>
+    <Helmet>
+        <title>Login - Easy Peasy</title>
+        <meta name="Login - Easy Peasy" content="Login - Easy Peasy" />
+      </Helmet>  
         <hr className='horizontal-line'/>
       <div className='login-container'>
         <h3>Login using</h3>
