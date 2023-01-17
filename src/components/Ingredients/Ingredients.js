@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './ingredients.css'
+import { Helmet } from 'react-helmet';
 
 // https://www.foodhero.org/ingredients
 // https://cdn.contentful.com/spaces/3nafpp0jo6h4/environments/master/entries?access_token=3I8lW_L0QpggHL-KfMPiTfCKR425Btwa3nTLelozRsI

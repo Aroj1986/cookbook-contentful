@@ -1,20 +1,21 @@
-import {useState, useEffect} from "react";
+import {useState} from "react";
 
 
-export default function Recipesearchbar ({setRecipes}) {
+export default function Recipesearchbar ({setRecipes, setAllRecipesBtn}) {
 
     const [searchValue, setSearchValue] = useState("");
 
 
-//call the Contentful-client to fetch the data
-    const contentful = require("contentful");
-    const client = contentful.createClient({
-    space: "3nafpp0jo6h4",
-    environment: "master", // defaults to 'master' if not set
-    accessToken: "hsNzkIL8Lrero_6ljmPQHYT7gn9_0sho0Akw6R7tQ_s",
-  });
+    //call the Contentful-client to fetch the data
+        const contentful = require("contentful");
+            const client = contentful.createClient({
+            space: "3nafpp0jo6h4",
+            environment: "master", // defaults to 'master' if not set
+            accessToken: "hsNzkIL8Lrero_6ljmPQHYT7gn9_0sho0Akw6R7tQ_s",
+        });
 
-  const getSearchResults = () => {
+    // getSearchResults with click on Search
+     const getSearchResults = () => {
             // fetch for search
             client.getEntries({
                 'content_type':"ourCookbook",
@@ -22,20 +23,19 @@ export default function Recipesearchbar ({setRecipes}) {
                 })
             .then((response) => {
                 setRecipes(response.items);
+                setAllRecipesBtn(false)
                 })
             .catch(console.error)
             .finally(() => {
                 setSearchValue('');
             })
-    }
+     }
 
       const getSearchValue = (e) => {
-        console.log(e.target.value)
         setSearchValue(e.target.value)
       }
 
       const searchWithEnter = (e) => {
-        console.log(e.key)
         if (e.key === 'Enter'){
             getSearchResults()
         };

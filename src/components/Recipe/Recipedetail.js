@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Helmet } from "react-helmet";
 
-export default function Recipedetail() {
+export default function Recipedetail({ isLoading, setIsLoading }) {
   const [recipeDetail, setRecipeDetail] = useState("");
   const [recipeDetailImage, setRecipeDetailImage] = useState([]);
 
@@ -19,6 +19,7 @@ export default function Recipedetail() {
   });
 
   useEffect(() => {
+    setIsLoading(true);
     // axios
     // .get(`https://cdn.contentful.com/spaces/3nafpp0jo6h4/environments/master/entries/${id}?access_token=hsNzkIL8Lrero_6ljmPQHYT7gn9_0sho0Akw6R7tQ_s`)
     // .then((response) => {
@@ -34,25 +35,37 @@ export default function Recipedetail() {
       .then((entry) => {
         setRecipeDetail(entry);
         setRecipeDetailImage(entry.fields.recipeImages);
+        setIsLoading(false);
       })
       .catch(console.error);
   }, []);
+
+  if (isLoading)
+    return (
+      <div className="loading-div">
+      <button class="btn loading-btn" type="button" disabled>
+          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          Loading...
+      </button>
+  </div>
+    );
 
   return (
     <div className="recipedetail container">
       <div className="row">
         {recipeDetailImage?.map((image) => {
           return (
-            <div key={image.sys.id} className="col-4">
+            <div key={image.sys.id} 
+                className="col-5 img-div-recipedetail">
               <img
                 src={image.fields?.file.url}
                 alt={recipeDetail.fields?.recipeTitle}
-                className="bigimage image margin-left"
+                className="bigimage image"
               ></img>
             </div>
           );
         })}
-        <div className="col-8">
+        <div className="col-7">
           <div className="detailtitle lineheight margin-left-big margin-bottom1 bold text-with-shadow ">
             {recipeDetail.fields?.recipeTitle}
           </div>

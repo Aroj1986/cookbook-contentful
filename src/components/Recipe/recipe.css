@@ -2,6 +2,7 @@
 .recipes {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     flex: 1;
     flex-grow: 1;
     flex-shrink: 1;
@@ -91,6 +92,16 @@ padding: 1rem;
 .bigimage {
     height: 300px;
     width: 300px;
+    margin-left: 1.5rem;
+}
+
+.img-div-recipedetail{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+
 }
 
 .lineheight {
@@ -164,4 +175,35 @@ padding: 1rem;
     color: rgb(7, 24, 5) !important;
     background-color: var(--recipe-green) !important;
     font-size: 1rem !important;
+}
+
+.hidden {
+    display: none;
+}
+
+.nosearchresults {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
+
+.nosearchresultstext{
+    font-size: 4rem;
+    padding: 2rem;
+    text-align: center;
+}
+
+.loading-btn {
+    background-color: var(--recipe-green) !important;
+    color: black !important;
+    margin-top: 5rem;
+    text-align: center;
+}
+
+.loading-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
