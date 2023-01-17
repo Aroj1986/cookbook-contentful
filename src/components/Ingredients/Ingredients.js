@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import './ingredients.css';
+import './ingredients.css'
 import { Helmet } from 'react-helmet';
 
 
