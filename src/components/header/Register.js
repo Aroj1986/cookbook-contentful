@@ -4,7 +4,8 @@ import { NavLink } from 'react-router-dom'
 import {Icon} from 'react-icons-kit'
 import {eyeOff} from 'react-icons-kit/feather/eyeOff'
 import {eye} from 'react-icons-kit/feather/eye'
-import { useState } from 'react'
+import { useState } from 'react';
+import { Helmet } from 'react-helmet'
 
 function Register() {
 
@@ -22,7 +23,12 @@ function Register() {
   })
 
   return (
+    
     <>
+     <Helmet>
+        <title>SignUp - Easy Peasy</title>
+        <meta name="SignUp - Easy Peasy" content="SignUp - Easy Peasy" />
+      </Helmet> 
     <hr className='horizontal-line'/>
       <div className='register-container'>
         <h3><b>CREATE ACCOUNT</b></h3>
