@@ -8,6 +8,7 @@ function Ingredients() {
 
   const [ingredientItems, setIngredientItems] = useState([])
   const [filterLetter, setFilterLetter] = useState("")
+  const [clickAlphabet, setClickAlphabet] = useState(false)
 
   const contentful = require("contentful")
   const client = contentful.createClient({
@@ -30,13 +31,17 @@ function Ingredients() {
   const handleAlphabet = event => {
     console.log(event.target.innerText)
     setFilterLetter(event.target.innerText)
+    setClickAlphabet(true)
     filterLetter("")
   }
+
+  console.log(clickAlphabet)
 
   const filteredIngredients = ingredientItems.filter((currentIngredient) => {
     if (currentIngredient.fields.ingredientName['0'] === filterLetter) {return currentIngredient.fields.ingredientName}
   })
       
+
   return (
     <>
       <Helmet>
@@ -88,7 +93,7 @@ function Ingredients() {
       </div>) : 
 
       (<div>
-        <h6 className="no-items-found">Ingredient with alphabet "{filterLetter}"</h6>
+        <h6 className={`no-items-found ${clickAlphabet ? "" : "hidden"}`}>No ingredient with alphabet "{filterLetter}"</h6>
         <div className='ingredients'>
           {ingredientItems.map((ingredient) => {
             return (
@@ -108,3 +113,4 @@ function Ingredients() {
 }
 
 export default Ingredients
+// {`no-items-found ${clickAlphabet ? "" : "hidden"}`}
