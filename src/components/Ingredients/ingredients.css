@@ -55,6 +55,10 @@ a {
   padding-top: 2rem;
 }
 
+.hidden {
+  display: none;
+}
+
 .ingredient-items {
   display: flex;
   flex-direction: row;
