@@ -1,13 +1,14 @@
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Helmet } from "react-helmet";
 import Cuisinedetailimage from "./Cuisinedetalimage";
 
-export default function CuisineDetail() {
+export default function CuisineDetail({ isLoading, setIsLoading }) {
   const { category } = useParams();
-
   const [tagDetails, setTagDetails] = useState([]);
+
+  const navigate = useNavigate();
 
   //call the Contentful-client to fetch the data
   const contentful = require("contentful");
@@ -18,6 +19,7 @@ export default function CuisineDetail() {
   });
 
   useEffect(() => {
+    setIsLoading(true);
     axios
       .get(
         `https://cdn.contentful.com/spaces/3nafpp0jo6h4/environments/master/entries?access_token=hsNzkIL8Lrero_6ljmPQHYT7gn9_0sho0Akw6R7tQ_s&metadata.tags.sys.id[in]=${category}`
@@ -25,6 +27,7 @@ export default function CuisineDetail() {
       .then((response) => {
         console.log(response.data.items);
         setTagDetails(response.data.items);
+        setIsLoading(false);
       })
       .catch((err) => {
         console.log(err);
@@ -43,6 +46,20 @@ export default function CuisineDetail() {
     return i?.charAt(0).toUpperCase() + i?.slice(1);
   }
 
+  if (isLoading)
+    return (
+      <div className="loading-div">
+        <button className="btn loading-btn" type="button" disabled>
+          <span
+            className="spinner-border spinner-border-sm"
+            role="status"
+            aria-hidden="true"
+          ></span>
+          Loading...
+        </button>
+      </div>
+    );
+
   return (
     <div className="cuisine-detail">
       <div className="cuisinedetail-description">
@@ -59,6 +76,8 @@ export default function CuisineDetail() {
                       <Cuisinedetailimage
                         id={image.sys.id}
                         key={image.sys.id}
+                        setIsLoading={setIsLoading}
+                        isLoading={isLoading}
                       />
                     );
                   })}
@@ -120,6 +139,29 @@ export default function CuisineDetail() {
             );
           })}
         </div>
+      </div>
+      <div className="row back-btn">
+        <Link
+          onClick={() => navigate(-1)}
+          className="textdecoration-none text-center"
+        >
+          <span className="">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="currentColor"
+              className="bi bi-skip-backward-btn "
+              viewBox="0 0 16 16"
+            >
+              <path d="M11.21 5.093A.5.5 0 0 1 12 5.5v5a.5.5 0 0 1-.79.407L8.5 8.972V10.5a.5.5 0 0 1-.79.407L5 8.972V10.5a.5.5 0 0 1-1 0v-5a.5.5 0 0 1 1 0v1.528l2.71-1.935a.5.5 0 0 1 .79.407v1.528l2.71-1.935z" />
+              <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z" />
+            </svg>
+          </span>
+          <span className="bold lineheight margin-left-half textdecoration-none half-small">
+            Go back
+          </span>
+        </Link>
       </div>
     </div>
   );

@@ -6,7 +6,8 @@ export default function Footer() {
           <div className="col-md-6 mt-md-0 mt-3 ">
             <h5 className="text-uppercase white-text mb-3">Easy Peasy Recipes</h5>
             <p className="small  margin-left">
-            We all come from somewhere. We all experience food in our own unique ways. <br></br>
+            We all come from somewhere. <br></br>
+             We all experience food in our own unique ways. <br></br>
                         Easy Peasy recipes are easy peasy made and delicious!
             </p>
           </div>
